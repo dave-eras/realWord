@@ -1,0 +1,1143 @@
+{
+  "repeat_phrases": [
+    "Sorry, could you say that again?",
+    "Sorry, can you say that again please?",
+    "Could you say that again please?",
+    "Could you say that a bit more slowly please?",
+    "Sorry, can you repeat that please?"
+  ],
+  "interactions": [
+    {
+      "interaction_id": "1",
+        "interaction_type": "one-step",
+          "npc": {
+                      "character_name": "Sofia",
+                      "character_id": "1",
+                      "feedback": [
+                        {
+                          "text": "",
+                          "tone": ""
+                        },
+                        {
+                          "text": "",
+                          "tone": ""
+                        },
+                        {
+                          "text": "",
+                          "tone": ""
+                        }
+                      ],
+                      "new_prompt": {
+                        "text": "What was that message about?",
+                        "tone": "neutral"
+                      },
+                      "audio": "yes",
+                      "audio_button": "no"
+                    },
+                "expectations": {
+                  "topic": "party",
+                  "function": ["give_information"],
+                  "tone": ["neutral"],
+                  "formality": ["neutral"]
+                },
+                "success_weights": {
+                  "topic": 0.4,
+                  "function": 0.3,
+                  "tone": 0.2,
+                  "formality": 0.1
+                },
+                "detailed_responses": [
+                  {
+                    "id": "0",
+                    "text": "It's an invitation to a party tomorrow.",
+                    "topic": "party",
+                    "function": "give_information",
+                    "tone": "neutral",
+                    "formality": "neutral",
+                    "audio": "yes",
+                    "audio_button": "no"
+                  },
+                  {
+                    "id": "1",
+                    "text": "We need to go shopping now.",
+                    "topic": "shopping",
+                    "function": "give_order",
+                    "tone": "direct",
+                    "formality": "neutral",
+                    "audio": "yes",
+                    "audio_button": "no"
+                  },
+                  {
+                    "id": "2",
+                    "text": "Oh nothing.",
+                    "topic": "",
+                    "function": "refuse_speak",
+                    "tone": "dismissive",
+                    "formality": "neutral",
+                    "audio": "yes",
+                    "audio_button": "no"
+                  },
+                  {
+                    "id": "3",
+                    "text": "Ask {characterName} to repeat.",
+                    "topic": "",
+                    "function": "ask_repeat",
+                    "tone": "neutral",
+                    "formality": "neutral",
+                    "audio": "yes",
+                    "audio_button": "no"
+                  }
+                ]
+              },
+              {
+                "interaction_id": "2",
+                  "interaction_type": "one-step",
+                    "npc": {
+                                "character_name": "Sofia",
+                                "character_id": "1",
+                                "feedback": [
+                                  {
+                                    "text": "Oh nice! Alice and Ben's housewarming?",
+                                    "tone": "happy"
+                                  },
+                                  {
+                                    "text": "Shopping? Oh ... you wanna make something to take to the party?",
+                                    "tone": "confused"
+                                  },
+                                  {
+                                    "text": "Come on! You can tell me! It was from Alice and Ben, right? For their housewarming?",
+                                    "tone": "playful"
+                                  }
+                                ],
+                                "new_prompt": {
+                                  "text": "They want us to bring something, so let's look in the recipe book and see what we can make.",
+                                  "tone": "neutral"
+                                },
+                                "audio": "yes",
+                                "audio_button": "no"
+                              },
+                          "expectations": {
+                            "topic": "recipe",
+                            "function": ["free_choice"],
+                            "tone": ["neutral"],
+                            "formality": ["neutral"]
+                          },
+                          "success_weights": {
+                            "topic": 1,
+                            "function": 0,
+                            "tone": 0,
+                            "formality": 0
+                          },
+                          "detailed_responses": [
+                            {
+                              "id": "0",
+                              "text": "Let's make Guacamole.",
+                              "topic": "recipe",
+                              "function": "free_choice",
+                              "tone": "neutral",
+                              "formality": "neutral",
+                              "audio": "yes",
+                              "audio_button": "no"
+                            },
+                            {
+                              "id": "1",
+                              "text": "Let's make stuffed mushrooms.",
+                              "topic": "recipe",
+                              "function": "suggest",
+                              "tone": "neutral",
+                              "formality": "neutral",
+                              "audio": "yes",
+                              "audio_button": "no"
+                            }
+                          ]
+                        },                    
+                                  {
+                                    "interaction_id": "3",
+                                    "interaction_type": "multichoice",
+                                    "content_selection": {
+                                      "from_interaction": "2"
+                                    },
+                                    "npc": {
+                                      "character_name": "Sofia",
+                                      "character_id": "1",
+                                      "feedback": [
+                                        {
+                                          "text": "Guacamole sounds great! Do we have everything? We need avocados, lemons, onions and tomatoes.",
+                                          "tone": "lively"
+                                        },
+                                        {
+                                          "text": "Stuffed mushrooms! Yummy but difficult. Do we have mushrooms, butter, ham, cheese, garlic and eggs?",
+                                          "tone": "lively"
+                                        }
+                                      ],
+                                      "new_prompt": {
+                                          "text": "",
+                                          "tone": ""
+                                      },
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "column_headers": {
+                                      "text_1": "We have:",
+                                      "text_2": "We don't have:"
+                                    },
+                                    "success_weights": {
+                                      "high": 0.0,
+                                      "medium": 0.0,
+                                      "low": 0.0
+                                    },
+                                    "content_sets": {
+                                      "0": {
+                                        "column_headers": {
+                                          "text_1": "We have:",
+                                          "text_2": "We don't have:"
+                                        },
+                                        "expectations": {
+                                          "high": {"min": 4, "max": 4},
+                                          "medium": {"min": 3, "max": 3},
+                                          "low": {"min": 0, "max": 2}
+                                        },
+                                        "multi_choice_option": [
+                                          {
+                                            "text": "avocados",
+                                            "expected_response": "yes"
+                                          },
+                                          {
+                                            "text": "lemons",
+                                            "expected_response": "yes"
+                                          },
+                                          {
+                                            "text": "onions",
+                                            "expected_response": "no"
+                                          },
+                                          {
+                                            "text": "tomatoes",
+                                            "expected_response": "no"
+                                          }
+                                        ]
+                                      },
+                                      "1": {
+                                        "column_headers": {
+                                          "text_1": "We have:",
+                                          "text_2": "We don't have:"
+                                        },
+                                        "expectations": {
+                                          "high": {"min": 6, "max": 6},
+                                          "medium": {"min": 4, "max": 5},
+                                          "low": {"min": 0, "max": 3}
+                                        },
+                                        "multi_choice_option": [
+                                          {
+                                            "text": "mushrooms",
+                                            "expected_response": "yes"
+                                          },
+                                          {
+                                            "text": "butter",
+                                            "expected_response": "yes"
+                                          },
+                                          {
+                                            "text": "ham",
+                                            "expected_response": "no"
+                                          },
+                                          {
+                                            "text": "cheese",
+                                            "expected_response": "no"
+                                          },
+                                          {
+                                            "text": "garlic",
+                                            "expected_response": "yes"
+                                          },
+                                          {
+                                            "text": "eggs",
+                                            "expected_response": "no"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "interaction_id": "4",
+                                    "interaction_type": "dialogue",
+                                    "s3_audio_config": {
+                                      "6": "https://corsbucket-cll.s3.eu-west-3.amazonaws.com/360/sfx/dialogue_interaction_4_line_6.mp3"
+                                    },
+                                    "feedback_constructions": [
+                                      {
+                                        "source_interaction": "3",
+                                        "transplant_into_line": 0,
+                                        "template": {
+                                          "prefix": "We've only got ",
+                                          "suffix": ".",
+                                          "separator": " and ",
+                                          "list_separator": ", ",
+                                          "list_final_separator": ", and ",
+                                          "no_items_message": "n/a"
+                                        },
+                                        "logic": {
+                                          "selection_type": "yes",
+                                          "item_source": "multichoice_response"
+                                        }
+                                      },
+                                      {
+                                        "source_interaction": "3",
+                                        "transplant_into_line": 10,
+                                        "template": {
+                                          "prefix": "... can you get us some ",
+                                          "suffix": "?",
+                                          "separator": " and ",
+                                          "list_separator": ", ",
+                                          "list_final_separator": ", and ",
+                                          "no_items_message": "n/a"
+                                        },
+                                        "logic": {
+                                          "selection_type": "no",
+                                          "item_source": "multichoice_response"
+                                        }
+                                      }
+                                    ],
+                                    "line_0": {
+                                      "character_name": "User",
+                                      "character_id": "0",
+                                      "text": "",
+                                      "tone": "disappointed",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_1": {
+                                      "character_name": "Sofia",
+                                      "character_id": "1",
+                                      "text": "Hey, you know what? Alex is at the supermarket right now.",
+                                      "tone": "lively",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_2": {
+                                      "character_name": "User",
+                                      "character_id": "0",
+                                      "text": "Oh yeah?",
+                                      "tone": "inquisitive",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_3": {
+                                      "character_name": "Sofia",
+                                      "character_id": "1",
+                                      "text": "Maybe he can bring our stuff home too.",
+                                      "tone": "lively",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_4": {
+                                      "character_name": "User",
+                                      "character_id": "0",
+                                      "text": "Maybe...",
+                                      "tone": "doubtful",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_5": {
+                                      "character_name": "Sofia",
+                                      "character_id": "1",
+                                      "text": "I'll call him.",
+                                      "tone": "lively",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_6": {
+                                      "character_name": "Sofia",
+                                      "character_id": "1",
+                                      "text": "ring-ring",
+                                      "tone": "like a phone ringing",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_7": {
+                                      "character_name": "Alex",
+                                      "character_id": "3",
+                                      "text": "Hello?",
+                                      "tone": "neutral",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_8": {
+                                      "character_name": "Sofia",
+                                      "character_id": "1",
+                                      "text": "Hey Alex, um ... could you do us a favour?",
+                                      "tone": "apologetic",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_9": {
+                                      "character_name": "Alex",
+                                      "character_id": "3",
+                                      "text": "What is it?",
+                                      "tone": "tired",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_10": {
+                                      "character_name": "Sofia",
+                                      "character_id": "1",
+                                      "text": "",
+                                      "tone": "neutral",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_11": {
+                                      "character_name": "Alex",
+                                      "character_id": "3",
+                                      "text": "Um ... yeah. Ok.",
+                                      "tone": "neutral",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_12": {
+                                      "character_name": "Sofia",
+                                      "character_id": "1",
+                                      "text": "Great, thanks! See you back at the flat.",
+                                      "tone": "lively",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    },
+                                    "line_13": {
+                                      "character_name": "Alex",
+                                      "character_id": "3",
+                                      "text": "Yep.",
+                                      "tone": "neutral",
+                                      "audio": "yes",
+                                      "audio_button": "no"
+                                    }
+                                  },
+                                 {
+        "interaction_id": "5",
+          "interaction_type": "one-step",
+            "npc": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "feedback": [
+                          {
+                            "text": "",
+                            "tone": ""
+                          },
+                          {
+                            "text": "",
+                            "tone": ""
+                          },
+                          {
+                            "text": "",
+                            "tone": ""
+                          }
+                        ],
+                        "new_prompt": {
+                          "text": "How about a housewarming gift. What should we get them? I know Ben, but I don't know Alice. What does Alice like?",
+                          "tone": "neutral"
+                        },
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                  "expectations": {
+                    "topic": "gift",
+                    "function": ["state_likes", "clarify"],
+                    "tone": ["helpful", "neutral"],
+                    "formality": ["neutral"]
+                  },
+                  "success_weights": {
+                    "topic": 0.4,
+                    "function": 0.4,
+                    "tone": 0.1,
+                    "formality": 0.1
+                  },
+                  "detailed_responses": [
+                    {
+                      "id": "0",
+                      "text": "She likes chocolate.",
+                      "topic": "gift",
+                      "function": "state_likes",
+                      "tone": "neutral",
+                      "formality": "neutral",
+                      "audio": "yes",
+                      "audio_button": "no"
+                    },
+                    {
+                      "id": "1",
+                      "text": "She likes basketball.",
+                      "topic": "sport",
+                      "function": "state_interest",
+                      "tone": "neutral",
+                      "formality": "neutral",
+                      "audio": "yes",
+                      "audio_button": "no"
+                    },
+                    {
+                      "id": "2",
+                      "text": "She's very kind and wears glasses.",
+                      "topic": "personality and physical appearance",
+                      "function": "describe_person",
+                      "tone": "neutral",
+                      "formality": "neutral",
+                      "audio": "yes",
+                      "audio_button": "no"
+                    },
+                    {
+                      "id": "3",
+                      "text": "Ask {characterName} to repeat.",
+                      "topic": "",
+                      "function": "ask_repeat",
+                      "tone": "neutral",
+                      "formality": "neutral",
+                      "audio": "yes",
+                      "audio_button": "no"
+                    }
+                  ]
+                },
+                {
+                  "interaction_id": "6",
+                  "interaction_type": "one-step",
+                      "npc": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "feedback": [
+                          {
+                            "text": "But Ben doesn't like chocolate.",
+                            "tone": "disappointed"
+                          },
+                          {
+                            "text": "Ok, but I was talking about food.",
+                            "tone": "patient"
+                          },
+                          {
+                            "text": "What *does* she like, not what *is* she like!",
+                            "tone": "playful"
+                          }
+                        ],
+                        "new_prompt": {
+                          "text": "We need something they both like. Any ideas?",
+                          "tone": "encouraging"
+                        },
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "expectations": {
+                        "topic": "gift",
+                        "function": ["ask_likes", "suggest", "state_likes"],
+                        "tone": ["helpful","friendly"],
+                        "formality": ["neutral"]
+                      },
+                      "success_weights": {
+                        "topic": 0.2,
+                        "function": 0.5,
+                        "tone": 0.3,
+                        "formality": 0
+                      },
+                      "detailed_responses": [
+                        {
+                          "id": "0",
+                          "text": "Does Ben like tea?",
+                          "topic": "gift",
+                          "function": "ask_likes",
+                          "tone": "friendly",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "1",
+                          "text": "Alice likes tea.",
+                          "topic": "gift",
+                          "function": "state_likes",
+                          "tone": "direct",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "2",
+                          "text": "How about tea?",
+                          "topic": "gift",
+                          "function": "suggest",
+                          "tone": "helpful",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        }
+                      ]
+                    },
+                    {
+                      "interaction_id": "7",
+                      "interaction_type": "reord",
+                      "npc": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "feedback": [
+                          {
+                            "text": "Hmm, nah not really. I've never seen him drink a cup of tea.",
+                            "tone": "neutral"
+                          },
+                          {
+                            "text": "Ok, I don't think Ben does though.",
+                            "tone": "neutral"
+                          },
+                          {
+                            "text": "Nah, I've never seen Ben drink a cup of tea.",
+                            "tone": "neutral"
+                          }
+                        ],
+                        "new_prompt": {
+                          "text": "",
+                          "tone": ""
+                        },
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "expectations": {
+                        "high": ["How about coffee? Does he like coffee?"],
+                        "medium": ["How about coffee?", "Does he like coffee?"],
+                        "low": ["How about tea? Does he like tea?", "How about tea?", "Does he like tea?"]
+                      },
+                      "success_weights": {
+                          "high": 1,
+                          "medium": 0.9,
+                          "low": 0.1
+                      },
+                      "hint": "H__ a____ coffee? D___ he l___ coffee?",
+                      "reord_segments": [
+                        {
+                          "text": " How"
+                        },
+                        {
+                          "text": " about"
+                        },
+                        {
+                          "text": " coffee"
+                        },
+                        {
+                          "text": " Does"
+                        },
+                        {
+                          "text": " he"
+                        },
+                        {
+                          "text": " like"
+                        },
+                        {
+                          "text": " tea"
+                        },
+                        {
+                          "text": "?"
+                        }
+                      ]
+                    },
+                    {
+                      "interaction_id": "8",
+                      "interaction_type": "one-step",
+                      "npc": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "feedback": [
+                          {
+                            "text": "He does! He loves it.",
+                            "tone": "lively"
+                          },
+                          {
+                            "text": "Good idea!",
+                            "tone": "lively"
+                          },
+                          {
+                            "text": "I just told you! No!",
+                            "tone": "impatient"
+                          }
+                        ],
+                        "new_prompt": {
+                          "text": "Does Alice like coffee?",
+                          "tone": ""
+                        },
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "expectations": {
+                        "topic": "right_answer_to_female",
+                        "function": ["give_information"],
+                        "tone": ["neutral"],
+                        "formality": ["neutral"]
+                      },
+                      "success_weights": {
+                        "topic": 1,
+                        "function": 0,
+                        "tone": 0,
+                        "formality": 0
+                      },
+                      "detailed_responses": [
+                        {
+                          "id": "0",
+                          "text": "Uh ... no.",
+                          "topic": "right_answer_to_female",
+                          "function": "give_information",
+                          "tone": "neutral",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "1",
+                          "text": "I think so.",
+                          "topic": "wrong_answer_to_female",
+                          "function": "give_information",
+                          "tone": "neutral",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "2",
+                          "text": "Yeah she loves it.",
+                          "topic": "wrong_answer_to_female",
+                          "function": "give_information",
+                          "tone": "neutral",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        }
+                      ]
+                    },
+                    {
+                      "interaction_id": "9",
+                      "interaction_type": "one-step",
+                      "npc": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "feedback": [
+                          {
+                            "text": "Oh. Well ...",
+                            "tone": "disappointed"
+                          },
+                          {
+                            "text": "You don't know?",
+                            "tone": "worried"
+                          },
+                          {
+                            "text": "INTERACTION 8, OPTION 2 => lastResponse_12 === 3",
+                            "tone": ""
+                          }
+                        ],
+                        "new_prompt": {
+                          "text": "What about fruit?",
+                          "tone": ""
+                        },
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "expectations": {
+                        "topic": "fruit",
+                        "function": ["clarify"],
+                        "tone": ["neutral"],
+                        "formality": ["neutral"]
+                      },
+                      "success_weights": {
+                        "topic": 0.8,
+                        "function": 0.05,
+                        "tone": 0.05,
+                        "formality": 0.05
+                      },
+                      "detailed_responses": [
+                        {
+                          "id": "0",
+                          "text": "What, like apples and oranges?",
+                          "topic": "fruit",
+                          "function": "clarify",
+                          "tone": "neutral",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "1",
+                          "text": "What, like sausage and ham?",
+                          "topic": "meat",
+                          "function": "clarify",
+                          "tone": "neutral",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "2",
+                          "text": "What, like nuts and seeds?",
+                          "topic": "nuts",
+                          "function": "clarify",
+                          "tone": "neutral",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        }
+                      ]
+                    },
+                    {
+                      "interaction_id": "10",
+                      "interaction_type": "reord",
+                      "npc": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "feedback": [
+                          { 
+                            "text": "Well I was thinking of something a bit more exciting. Like strawberries or cherries.",
+                            "tone": "pensive"
+                          },
+                          {
+                            "text": "No... fruit! Like strawberries or cherries.",
+                            "tone": "incredulous"
+                          },
+                          {
+                            "text": "No... fruit! Like strawberries or cherries.",
+                            "tone": "incredulous"
+                          }
+                        ],
+                        "new_prompt": {
+                          "text": "",
+                          "tone": ""
+                        },
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "expectations": {
+                        "high": ["She likes strawberries but she doesn't like cherries", "She doesn't like cherries but she likes strawberries"],
+                        "medium": ["She likes cherries but she doesn't like strawberries", "She doesn't like strawberries but she likes cherries"],
+                        "low": []
+                      },
+                      "success_weights": {
+                          "high": 1,
+                          "medium": 0.1,
+                          "low": 0
+                        },
+                        "hint": "S__ l____ strawberries b___ she d_____ l___ cherries",
+                        "reord_segments": [
+                        {
+                          "text": " She"
+                        },
+                        {
+                          "text": " likes"
+                        },
+                        {
+                          "text": " strawberries"
+                        },
+                        {
+                          "text": " but"
+                        },
+                        {
+                          "text": " she"
+                        },
+                        {
+                          "text": " doesn't"
+                        },
+                        {
+                          "text": " like"
+                        },
+                        {
+                          "text": " cherries"
+                        }
+                      ]
+                    },
+                    {
+                      "interaction_id": "11",
+                      "interaction_type": "one-step",
+                      "npc": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "feedback": [
+                          {
+                            "text": "Oh no! Ben is the exact opposite!",
+                            "tone": "incredulous"
+                          },
+                          {
+                            "text": "INTERACTION 10, SUCCESS_WEIGHT 0.1 => lastResponse_12 === 4",
+                            "tone": ""
+                          },
+                          {
+                            "text": "",
+                            "tone": ""
+                          }
+                        ],
+                        "new_prompt": {
+                          "text": "What do you suggest?",
+                          "tone": "neutral"
+                        },
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "expectations": {
+                        "topic": "gift",
+                        "function": ["suggest"],
+                        "tone": ["neutral", "helpful"],
+                        "formality": ["neutral"]
+                      },
+                      "success_weights": {
+                        "topic": 0.1,
+                        "function": 0.4,
+                        "tone": 0.3,
+                        "formality": 0
+                      },
+                      "detailed_responses": [
+                        {
+                          "id": "0",
+                          "text": "Well how about a pineapple?",
+                          "topic": "gift",
+                          "function": "suggest",
+                          "tone": "helpful",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "1",
+                          "text": "Let's get both?",
+                          "topic": "gift",
+                          "function": "suggest",
+                          "tone": "impatient",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "2",
+                          "text": "Just forget it! We're gonna be late anyway.",
+                          "topic": "gift",
+                          "function": "suggest",
+                          "tone": "impatient",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        }
+                      ]
+                    },
+                    {
+                      "interaction_id": "12",
+                      "interaction_type": "one-step",
+                      "npc": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "feedback": [
+                          {
+                            "text": "INTERACTION 11, OPTION 0 => lastResponse_12 === 1",
+                            "tone": ""
+                          },
+                          {
+                            "text": "Erm ... not sure I have enough money for both!",
+                            "tone": "apologetic"
+                          },
+                          {
+                            "text": "No! Come on. We can't go to a housewarming party without a gift!",
+                            "tone": "encouraging"
+                          }
+                        ],
+                        "new_prompt": {
+                          "text": "I know! What about a pineapple?",
+                          "tone": "lively"
+                        },
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "expectations": {
+                        "topic": "gift",
+                        "function": [""],
+                        "tone": [""],
+                        "formality": [""]
+                      },
+                      "success_weights": {
+                        "topic": 1,
+                        "function": 0,
+                        "tone": 0,
+                        "formality": 0
+                      },
+                      "detailed_responses": [
+                        {
+                          "id": "0",
+                          "text": "Eurgh. Alice hates pineapple.",
+                          "topic": "gift",
+                          "function": "state_likes",
+                          "tone": "disgusted",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "1",
+                          "text": "Bingo! Pineapple is perfect.",
+                          "topic": "gift",
+                          "function": "agree",
+                          "tone": "playful",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        },
+                        {
+                          "id": "2",
+                          "text": "Erm ... no. What if I buy the cherries and you get the strawberries?",
+                          "topic": "gift",
+                          "function": "suggest",
+                          "tone": "neutral",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        }
+                      ]
+                    },
+                    {
+                      "interaction_id": "13",
+                      "interaction_type": "end-point",
+                      "npc": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "feedback": [
+                          {
+                            "text": "Oh! Okay okay. You know what? Let's just get them some coffee.",
+                            "tone": "exasperated"
+                          },
+                          {
+                            "text": "Excellent! Pineapple it is!",
+                            "tone": "happy"
+                          },
+                          {
+                            "text": "Ok, it's a deal. Let's get them cherries AND strawberries!",
+                            "tone": "lively"
+                          },
+                          {
+                            "text": "Wow ...okay. That was almost too easy. Let's get them some coffee then!",
+                            "tone": "incredulous"
+                          },
+                          {
+                            "text": "Oh great! Same as Ben! Let's get them some cherries then.",
+                            "tone": "lively"
+                          }
+                        ],
+                        "new_prompt": {
+                          "text": "All good?",
+                          "tone": "lively"
+                        },
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "expectations": {
+                        "topic": "gift",
+                        "function": ["agree"],
+                        "tone": [""],
+                        "formality": [""]
+                      },
+                      "success_weights": {
+                        "topic": 0.6,
+                        "function": 0.4,
+                        "tone": 0,
+                        "formality": 0
+                      },
+                      "detailed_responses": [
+                        {
+                          "id": "0",
+                          "text": "All good.",
+                          "topic": "gift",
+                          "function": "agree",
+                          "tone": "happy",
+                          "formality": "neutral",
+                          "audio": "yes",
+                          "audio_button": "no"
+                        }
+                      ]
+                    },
+                    {
+                      "interaction_id": "14",
+                      "interaction_type": "dialogue",
+                      "feedback_constructions": [
+                        {
+                          "source_interaction": "3",
+                          "transplant_into_line": 1,
+                          "template": {
+                            "prefix": "Hey. You said you needed ",
+                            "suffix": ", right?",
+                            "separator": " and ",
+                            "list_separator": ", ",
+                            "list_final_separator": ", and ",
+                            "no_items_message": "n/a"
+                          },
+                          "logic": {
+                            "selection_type": "no",
+                            "item_source": "multichoice_response"
+                          }
+                        },
+                        {
+                          "source_interaction": "3",
+                          "transplant_into_line": 3,
+                          "template": {
+                            "prefix": "",
+                            "suffix": "",
+                            "separator": "",
+                            "list_separator": "",
+                            "list_final_separator": "",
+                            "no_items_message": ""
+                          },
+                          "logic": {
+                            "selection_type": "dynamic_line_selection",
+                            "item_source": "multichoice_response"
+                          }
+                        }
+                      ],
+                      "line_0": {
+                        "character_name": "Sofia",
+                        "character_id": "1",
+                        "text": "Alex is back.",
+                        "tone": "neutral",
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "line_1": {
+                        "character_name": "Alex",
+                        "character_id": "3",
+                        "text": "",
+                        "tone": "neutral",
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "line_2": {
+                        "character_name": "User",
+                        "character_id": "0",
+                        "text": "Right.",
+                        "tone": "neutral",
+                        "audio": "yes",
+                        "audio_button": "no"
+                      },
+                      "line_3": {
+                        "character_name": "Alex",
+                        "character_id": "3",
+                        "text": "",
+                        "tone": "neutral",
+                        "audio": "yes",
+                        "audio_button": "no",
+                        "dynamic_variants": {
+                          "success": {
+                            "character_name": "Alex",
+                            "character_id": "3",
+                            "text": "Cool, that's what I got. I left the bag in the kitchen for you.",
+                            "tone": "neutral"
+                          },
+                          "missing_items": {
+                            "character_name": "Sofia",
+                            "character_id": "1",
+                            "text": "{characterName}! We need {missing_items} too!",
+                            "tone": "incredulous"
+                          },
+                          "unnecessary_items": {
+                            "character_name": "Sofia",
+                            "character_id": "1",
+                            "text": "{characterName}! We already have {unnecessary_items}.",
+                            "tone": "incredulous"
+                          },
+                          "both_errors": {
+                            "character_name": "Sofia",
+                            "character_id": "1",
+                            "text": "{characterName}! We already have {unnecessary_items} - and we need {missing_items} too!",
+                            "tone": "incredulous"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+
+
+

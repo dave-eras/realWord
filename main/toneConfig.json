@@ -1,0 +1,62 @@
+{
+    "key": {
+        "speaking_rate": {
+            "0": "slow as if speaking to someone with limited language ability",
+            "1": "normal",
+            "2": "extra fast as if time is running out"
+        },
+        "pitch": {
+            "0": "low",
+            "1": "regular",
+            "2": "high"
+        },
+        "emphasis": {
+            "0": "flat",
+            "1": "regular",
+            "2": "strong"
+        },
+        "pauses": {
+            "0": "minimal",
+            "1": "regular",
+            "2": "extra pauses to ensure the listener has understood"
+        },
+        "intonation": {
+            "0": "falling",
+            "1": "regular",
+            "2": "rising as if unsure"
+        },
+        "rhythm": {
+            "0": "flat",
+            "1": "measured",
+            "2": "relaxed",
+            "3": "staccato",
+            "4": "bouncy"
+        },
+        "articulation": {
+            "0": "soft",
+            "1": "natural",
+            "2": "sharp"
+        },
+        "volume": {
+            "0": "whisper",
+            "1": "quiet",
+            "2": "regular",
+            "3": "loud"
+        },
+        "hesitation": {
+            "0": "none",
+            "1": "slight",
+            "2": "frequent"
+        },
+        "formality": {
+            "0": "low",
+            "1": "regular",
+            "2": "high"
+        },
+        "warmth": {
+            "0": "cold",
+            "1": "regular",
+            "2": "warm"
+        }
+    }
+} 

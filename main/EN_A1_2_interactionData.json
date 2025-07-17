@@ -1,0 +1,191 @@
+{
+  "repeat_phrases": [
+    "Sorry, could you say that again?",
+    "Sorry, can you say that again please?",
+    "Could you say that again please?",
+    "Could you say that a bit more slowly please?",
+    "Sorry, can you repeat that please?"
+  ],
+  "interactions": [
+    {
+      "interaction_id": "3",
+      "interaction_type": "two-step",
+      "content_selection": {
+        "from_interaction": ["1", "6"]
+      },
+      "npc": {
+        "character_name": "Sofia",
+        "character_id": "1",
+        "feedback": [
+          {
+            "text": "That's not quite right. Let me explain...",
+            "tone": "patient"
+          },
+          {
+            "text": "Hmm, that's not what I was looking for.",
+            "tone": "neutral"
+          },
+          {
+            "text": "Let me give you a hint...",
+            "tone": "helpful"
+          }
+        ],
+        "new_prompt": {
+          "text": "Can you try again?",
+          "tone": "encouraging"
+        },
+        "audio": "yes",
+        "audio_button": "no"
+      },
+      "expectations": {
+        "topic": "grammar",
+        "function": ["give_information"],
+        "tone": ["neutral"],
+        "formality": ["neutral"]
+      },
+      "success_weights": {
+        "topic": 0.4,
+        "function": 0.3,
+        "tone": 0.2,
+        "formality": 0.1
+      },
+      "understanding_check": [
+        {
+          "id": "0",
+          "text": "I understand the question.",
+          "topic": "understanding",
+          "function": "confirm_understanding",
+          "tone": "neutral",
+          "formality": "neutral",
+          "audio": "yes",
+          "audio_button": "no"
+        },
+        {
+          "id": "1",
+          "text": "I need clarification.",
+          "topic": "understanding",
+          "function": "ask_clarification",
+          "tone": "neutral",
+          "formality": "neutral",
+          "audio": "yes",
+          "audio_button": "no"
+        },
+        {
+          "id": "2",
+          "text": "Ask {characterName} to repeat.",
+          "topic": "understanding",
+          "function": "ask_repeat",
+          "tone": "neutral",
+          "formality": "neutral",
+          "audio": "yes",
+          "audio_button": "no"
+        }
+      ],
+      "content_sets": {
+        "0": {
+          "detailed_responses": [
+            {
+              "id": "0",
+              "text": "The correct answer is option A.",
+              "topic": "grammar",
+              "function": "give_information",
+              "tone": "neutral",
+              "formality": "neutral",
+              "audio": "yes",
+              "audio_button": "no"
+            },
+            {
+              "id": "1",
+              "text": "I think it's option B.",
+              "topic": "grammar",
+              "function": "give_information",
+              "tone": "neutral",
+              "formality": "neutral",
+              "audio": "yes",
+              "audio_button": "no"
+            },
+            {
+              "id": "2",
+              "text": "Ask {characterName} to repeat.",
+              "topic": "",
+              "function": "ask_repeat",
+              "tone": "neutral",
+              "formality": "neutral",
+              "audio": "yes",
+              "audio_button": "no"
+            }
+          ]
+        },
+        "1": {
+          "detailed_responses": [
+            {
+              "id": "0",
+              "text": "Let me try option A this time.",
+              "topic": "grammar",
+              "function": "give_information",
+              "tone": "neutral",
+              "formality": "neutral",
+              "audio": "yes",
+              "audio_button": "no"
+            },
+            {
+              "id": "1",
+              "text": "I'll go with option B.",
+              "topic": "grammar",
+              "function": "give_information",
+              "tone": "neutral",
+              "formality": "neutral",
+              "audio": "yes",
+              "audio_button": "no"
+            },
+            {
+              "id": "2",
+              "text": "Ask {characterName} to repeat.",
+              "topic": "",
+              "function": "ask_repeat",
+              "tone": "neutral",
+              "formality": "neutral",
+              "audio": "yes",
+              "audio_button": "no"
+            }
+          ]
+        },
+        "6": {
+          "detailed_responses": [
+            {
+              "id": "0",
+              "text": "I believe the answer is option A.",
+              "topic": "grammar",
+              "function": "give_information",
+              "tone": "neutral",
+              "formality": "neutral",
+              "audio": "yes",
+              "audio_button": "no"
+            },
+            {
+              "id": "1",
+              "text": "My guess is option B.",
+              "topic": "grammar",
+              "function": "give_information",
+              "tone": "neutral",
+              "formality": "neutral",
+              "audio": "yes",
+              "audio_button": "no"
+            },
+            {
+              "id": "2",
+              "text": "Ask {characterName} to repeat.",
+              "topic": "",
+              "function": "ask_repeat",
+              "tone": "neutral",
+              "formality": "neutral",
+              "audio": "yes",
+              "audio_button": "no"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+

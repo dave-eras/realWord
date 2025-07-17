@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Window</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            height: 100vh;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* Chat History Section */
+        .chat-section {
+            width: 50%;
+            background-color: #fef9e7;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .message.user {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .message.npc {
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .message-bubble {
+            padding: 10px 15px;
+            border-radius: 18px;
+            position: relative;
+            transition: transform 0.2s ease;
+        }
+
+        .message-bubble.user:hover {
+            transform: scale(1.02);
+        }
+
+        .message-bubble.user {
+            background-color: #87ceeb;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .message-bubble.npc {
+            background-color: white;
+            color: #333;
+            border: 1px solid #ddd;
+            cursor: default;
+        }
+
+        /* Remove hover effect for NPC messages */
+        .message-bubble.npc:hover {
+            transform: none;
+        }
+
+        /* Remove hover effect and cursor pointer for dialogue user messages */
+        .message-bubble.user.dialogue {
+            cursor: default;
+        }
+
+        .message-bubble.user.dialogue:hover {
+            transform: none;
+        }
+
+        .character-name {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .character-name.user {
+            color: #333;
+        }
+
+        .character-name.character-1 {
+            color: #e91e63;
+        }
+
+        .character-name.character-2 {
+            color: #4caf50;
+        }
+
+        .character-name.character-3 {
+            color: #ffc107;
+        }
+
+        .character-name.character-4 {
+            color: #ff9800;
+        }
+
+        .message-text {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        /* Character Section */
+        .character-section {
+            width: 50%;
+            background-color: #f5f5f5;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .character-container {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .character-image {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .speech-bubble {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: white;
+            border-radius: 20px;
+            padding: 15px 20px;
+            max-width: 200px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid #ddd;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid white;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        .speech-bubble::before {
+            content: '';
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 12px solid #ddd;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            z-index: -1;
+        }
+
+        .feedback-emoji {
+            font-size: 24px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .feedback-text {
+            font-size: 12px;
+            line-height: 1.3;
+            color: #333;
+        }
+
+        /* Scrollbar Styling */
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Chat History Section -->
+        <div class="chat-section">
+            <div class="chat-header">Chat History</div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Messages will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Character Section -->
+        <div class="character-section">
+            <div class="character-container">
+                <img src="7 - chat history.png" alt="Character" class="character-image">
+                <div class="speech-bubble" id="speechBubble">
+                    <div class="feedback-emoji">💬</div>
+                    <div class="feedback-text">Click on a message to get some feedback</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Rich descriptions data (will be loaded from EN_richDescriptions.json)
+        let richDescriptions = {};
+
+        // Initialize the chat history
+        function initializeChatHistory() {
+            loadRichDescriptions();
+        }
+
+        // Load rich descriptions from the JSON file
+        async function loadRichDescriptions() {
+            try {
+                const response = await fetch('EN_richDescriptions.json');
+                richDescriptions = await response.json();
+            } catch (error) {
+                console.error('Error loading rich descriptions:', error);
+            }
+        }
+
+        // Update chat history with current data
+        function updateChatHistory() {
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '';
+
+            // Get chat history from parent window
+            let chatHistory = [];
+            try {
+                if (window.parent && window.parent.buildChatHistory) {
+                    chatHistory = window.parent.buildChatHistory();
+                } else {
+                    chatMessages.innerHTML = '<div class="message"><div class="message-bubble npc">Chat history not available</div></div>';
+                    return;
+                }
+            } catch (error) {
+                console.error("Error getting chat history:", error);
+                chatMessages.innerHTML = '<div class="message"><div class="message-bubble npc">Error loading chat history</div></div>';
+                return;
+            }
+
+            if (!chatHistory || chatHistory.length === 0) {
+                chatMessages.innerHTML = '<div class="message"><div class="message-bubble npc">No chat history available</div></div>';
+                return;
+            }
+
+            // Display the chat history
+            chatHistory.forEach(item => {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${item.speaker.toLowerCase()}`;
+                
+                const bubbleDiv = document.createElement('div');
+                bubbleDiv.className = `message-bubble ${item.speaker.toLowerCase()}`;
+                
+                // Add dialogue class for user messages from dialogue interactions
+                if (item.speaker === 'User' && item.interactionType === "dialogue") {
+                    bubbleDiv.classList.add('dialogue');
+                }
+                
+                // Add character name for NPC messages (including dialogue NPCs)
+                if (item.speaker === 'NPC' && item.characterName) {
+                    const nameDiv = document.createElement('div');
+                    nameDiv.className = `character-name character-${item.characterId || '1'}`;
+                    nameDiv.textContent = item.characterName;
+                    bubbleDiv.appendChild(nameDiv);
+                }
+                
+                const textDiv = document.createElement('div');
+                textDiv.className = 'message-text';
+                textDiv.textContent = item.text;
+                bubbleDiv.appendChild(textDiv);
+                
+                // Add click handler for feedback (only for user messages that are actual responses)
+                // Dialogue user lines should NOT be clickable since they're not user responses
+                if (item.speaker === 'User' && item.interactionId && item.interactionType !== "dialogue") {
+                    console.log('Adding click handler for user message:', item.interactionId, item.metadata);
+                    bubbleDiv.onclick = () => {
+                        console.log('User message clicked:', item.interactionId, item.metadata);
+                        showFeedback(item.interactionId, item.metadata);
+                    };
+                    // Add visual indication that it's clickable
+                    bubbleDiv.style.cursor = 'pointer';
+                }
+                
+                messageDiv.appendChild(bubbleDiv);
+                chatMessages.appendChild(messageDiv);
+            });
+            
+            // Scroll to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+
+
+        // Show feedback for a specific interaction
+        function showFeedback(interactionId, metadata) {
+            const speechBubble = document.getElementById('speechBubble');
+            const emojiDiv = speechBubble.querySelector('.feedback-emoji');
+            const textDiv = speechBubble.querySelector('.feedback-text');
+
+            console.log('showFeedback called with:', { interactionId, metadata });
+
+            // Handle different interaction types
+            if (metadata && metadata.interactionType === "multichoice") {
+                // Handle multichoice interactions
+                if (metadata.choices) {
+                    const correctChoices = metadata.choices.filter(choice => 
+                        choice.selection === "yes" && choice.expected_response === "yes" ||
+                        choice.selection === "no" && choice.expected_response === "no"
+                    ).length;
+                    const totalChoices = metadata.choices.length;
+                    const accuracy = (correctChoices / totalChoices) * 100;
+                    
+                    if (accuracy >= 80) {
+                        emojiDiv.textContent = '😊';
+                        textDiv.textContent = `Great job! You got ${correctChoices} out of ${totalChoices} items correct.`;
+                    } else if (accuracy >= 60) {
+                        emojiDiv.textContent = '🙂';
+                        textDiv.textContent = `Good effort! You got ${correctChoices} out of ${totalChoices} items correct.`;
+                    } else {
+                        emojiDiv.textContent = '😐';
+                        textDiv.textContent = `You got ${correctChoices} out of ${totalChoices} items correct. Try to be more careful next time.`;
+                    }
+                } else {
+                    emojiDiv.textContent = '💬';
+                    textDiv.textContent = 'Multichoice interaction completed.';
+                }
+            } else if (metadata && metadata.level) {
+                // Handle reorder interactions
+                if (metadata.level === "high") {
+                    emojiDiv.textContent = '😊';
+                    textDiv.textContent = 'Excellent response!';
+                } else if (metadata.level === "medium") {
+                    emojiDiv.textContent = '🙂';
+                    textDiv.textContent = 'Good response!';
+                } else if (metadata.level === "low") {
+                    emojiDiv.textContent = '😐';
+                    textDiv.textContent = 'Basic response - could be improved';
+                }
+            } else if (metadata && (metadata.topic || metadata.function || metadata.tone)) {
+                // Handle one-step, two-step, and end-point interactions
+                emojiDiv.textContent = '💬';
+                textDiv.textContent = 'Response submitted successfully.';
+                
+                // Try to generate detailed feedback
+                if (richDescriptions) {
+                    const feedback = generateDetailedFeedback(interactionId, metadata);
+                    if (feedback) {
+                        textDiv.innerHTML = feedback;
+                    }
+                }
+            } else {
+                // Default case
+                emojiDiv.textContent = '💬';
+                textDiv.textContent = 'Click on a message to get feedback';
+            }
+        }
+
+        // Generate detailed feedback based on metadata
+        function generateDetailedFeedback(interactionId, metadata) {
+            if (!metadata || !richDescriptions) return null;
+
+            const feedbackMessages = [];
+            
+            // Get NPC name and interaction data from parent window
+            let npcName = "The NPC";
+            let interaction = null;
+            
+            try {
+                if (window.parent && window.parent.interactionData) {
+                    interaction = window.parent.interactionData.interactions.find(i => Number(i.interaction_id) === Number(interactionId));
+                    if (interaction && interaction.npc) {
+                        npcName = interaction.npc.character_name || "The NPC";
+                    }
+                }
+            } catch (error) {
+                console.error("Error getting interaction data:", error);
+            }
+            
+            // If we can't get interaction data, provide basic feedback based on metadata
+            if (!interaction || !interaction.expectations) {
+                console.log("No interaction expectations found, providing basic feedback");
+                
+                // Provide basic feedback based on available metadata
+                if (metadata.topic && richDescriptions.topics?.[metadata.topic]) {
+                    const topicDesc = richDescriptions.topics[metadata.topic];
+                    feedbackMessages.push(`You ${topicDesc.past_tense_description}.`);
+                }
+                
+                if (metadata.function && richDescriptions.functions?.[metadata.function]) {
+                    const funcDesc = richDescriptions.functions[metadata.function];
+                    feedbackMessages.push(`You used the function: ${funcDesc.description}.`);
+                }
+                
+                if (metadata.tone && richDescriptions.tones?.[metadata.tone]) {
+                    const toneDesc = richDescriptions.tones[metadata.tone];
+                    feedbackMessages.push(`You were ${toneDesc.description}.`);
+                }
+                
+                return feedbackMessages.length > 0 ? feedbackMessages.join('<br><br>') : null;
+            }
+            
+            const expectedMetadata = interaction.expectations;
+            const userMetadata = metadata;
+
+            // Check topic mismatch - only show if user's topic doesn't match expected topic
+            if (expectedMetadata.topic && userMetadata.topic && expectedMetadata.topic !== userMetadata.topic) {
+                const expectedTopicDesc = richDescriptions.topics?.[expectedMetadata.topic];
+                const actualTopicDesc = richDescriptions.topics?.[userMetadata.topic];
+                if (expectedTopicDesc && actualTopicDesc) {
+                    feedbackMessages.push(
+                        `${npcName} expected you ${expectedTopicDesc.expectation_description} but you ${actualTopicDesc.past_tense_description}!`
+                    );
+                }
+            }
+
+            // Check function mismatch - only show if user's function doesn't match expected function
+            if (expectedMetadata.function && userMetadata.function) {
+                const expectedFunctions = Array.isArray(expectedMetadata.function) ? expectedMetadata.function : [expectedMetadata.function];
+                if (!expectedFunctions.includes(userMetadata.function)) {
+                    const expectedFunc = richDescriptions.functions?.[expectedFunctions[0]];
+                    const actualFunc = richDescriptions.functions?.[userMetadata.function];
+                    if (expectedFunc && actualFunc) {
+                        feedbackMessages.push(
+                            `${npcName} expected you to ${expectedFunc.description}, like "${expectedFunc.examples[0]}" but what you did was ${actualFunc.description}.`
+                        );
+                    }
+                }
+            }
+
+            // Check tone mismatch - only show if user's tone doesn't match expected tone
+            if (expectedMetadata.tone && userMetadata.tone) {
+                const expectedTones = Array.isArray(expectedMetadata.tone) ? expectedMetadata.tone : [expectedMetadata.tone];
+                if (!expectedTones.includes(userMetadata.tone)) {
+                    const expectedTone = richDescriptions.tones?.[expectedTones[0]];
+                    const actualTone = richDescriptions.tones?.[userMetadata.tone];
+                    if (expectedTone && actualTone) {
+                        feedbackMessages.push(
+                            `${npcName} expected you to ${expectedTone.description}, like "${expectedTone.examples[0]}" but you were ${actualTone.description} here.`
+                        );
+                    }
+                }
+            }
+
+            // Check formality mismatch - only show if user's formality doesn't match expected formality
+            if (expectedMetadata.formality && userMetadata.formality) {
+                const expectedFormalities = Array.isArray(expectedMetadata.formality) ? expectedMetadata.formality : [expectedMetadata.formality];
+                if (!expectedFormalities.includes(userMetadata.formality)) {
+                    const expectedFormality = richDescriptions.formality?.[expectedFormalities[0]];
+                    const actualFormality = richDescriptions.formality?.[userMetadata.formality];
+                    if (expectedFormality && actualFormality) {
+                        feedbackMessages.push(
+                            `${npcName} expected you to ${expectedFormality.description} here, but you were ${actualFormality.description}.`
+                        );
+                    }
+                }
+            }
+
+            return feedbackMessages.length > 0 ? feedbackMessages.join('<br><br>') : null;
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeChatHistory();
+            // Initial load of chat history
+            setTimeout(updateChatHistory, 100);
+        });
+
+        // Function to refresh chat history (can be called from parent)
+        window.refreshChatHistory = updateChatHistory;
+    </script>
+</body>
+</html>

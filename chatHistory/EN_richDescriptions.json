@@ -1,0 +1,442 @@
+{
+  "functions": {
+    "accept_help": {
+      "description": "agree to help",
+      "examples": [
+        "Sure, I'd be happy to help",
+        "Of course, no problem",
+        "Yes, I can do that"
+      ]
+    },
+    "refuse_help": {
+      "description": "decline to help",
+      "examples": [
+        "Sorry, I can't help with that",
+        "I'm afraid I won't be able to do that",
+        "No, I can't assist you right now"
+      ]
+    },
+    "introduce_yourself": {
+      "description": "introduce yourself",
+      "examples": [
+        "Hi, I'm [name]",
+        "My name is [name]",
+        "I'm [name], nice to meet you"
+      ]
+    },
+    "accept_offer": {
+      "description": "agree to accept an offer",
+      "examples": [
+        "Yes, thank you",
+        "That would be great",
+        "I'd love that"
+      ]
+    },
+    "ask_repeat": {
+      "description": "ask to say something again",
+      "examples": [
+        "Could you say that again?",
+        "Sorry, can you repeat that?",
+        "I didn't catch that, could you repeat it?"
+      ]
+    },
+    "state_my_preference": {
+      "description": "talk about a personal choice or preference",
+      "examples": [
+        "I prefer [option]",
+        "I'd rather have [option]",
+        "I like [option] better"
+      ]
+    },
+    "clarify": {
+      "description": "ask for clarification",
+      "examples": [
+        "Could you clarify what you mean?",
+        "I'm not sure I understand, can you explain?",
+        "What exactly do you mean by that?"
+      ]
+    },
+    "state_interest": {
+      "description": "talk about your interests",
+      "examples": [
+        "I like basketball",
+        "I'm interested in [topic]",
+        "My hobbies are [hobbies]"
+      ]
+    },
+    "describe_person": {
+      "description": "describe someone's appearance or characteristics",
+      "examples": [
+        "She has brown hair",
+        "He looks like his dad",
+        "They are very kind"
+      ]
+    },
+    "ask_preference": {
+      "description": "ask about choices or preferences",
+      "examples": [
+        "What do you prefer?",
+        "Which one do you like better?",
+        "What's your preference?"
+      ]
+    },
+    "ask_likes": {
+      "description": "ask about likes and dislikes",
+      "examples": [
+        "Do you like chips?",
+        "Does he enjoy playing basketball?",
+        "Does she like pineapples?"
+      ]
+    },
+    "suggest": {
+      "description": "suggest an idea or recommendation",
+      "examples": [
+        "How about we try [suggestion]?",
+        "Maybe we could [suggestion]",
+        "I suggest we [suggestion]"
+      ]
+    },
+    "give_information": {
+      "description": "provide facts or details",
+      "examples": [
+        "It's about the party tomorrow",
+        "She likes chocolate",
+        "The meeting is at 3pm"
+      ]
+    },
+    "give_order": {
+      "description": "tell someone what to do",
+      "examples": [
+        "We need to go shopping now",
+        "Clean your room",
+        "Call the doctor"
+      ]
+    },
+    "refuse_speak": {
+      "description": "decline to provide information or answer",
+      "examples": [
+        "Oh nothing",
+        "I don't want to talk about it",
+        "That's private"
+      ]
+    },
+    "state_likes": {
+      "description": "express what someone likes or dislikes",
+      "examples": [
+        "Alice hates pineapple",
+        "They love chocolate",
+        "He doesn't like tea"
+      ]
+    },
+    "state_my_likes": {
+      "description": "express what you like or dislike",
+      "examples": [
+        "I love chocolate",
+        "I enjoy reading",
+        "I like tea with honey"
+      ]
+    },
+    "agree": {
+      "description": "express agreement or approval",
+      "examples": [
+        "All good",
+        "Bingo! That's perfect",
+        "Yes, I agree"
+      ]
+    },
+    "free_choice": {
+      "description": "choose whichever option you like",
+      "examples": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "tones": {
+    "polite": {
+      "description": "be polite",
+      "examples": [
+        "using please and thank you",
+        "using formal language",
+        "showing consideration for others"
+      ]
+    },
+    "apologetic": {
+      "description": "express regret or say sorry",
+      "examples": [
+        "I'm sorry about that",
+        "I apologize for the inconvenience",
+        "I feel bad about this"
+      ]
+    },
+    "casual": {
+      "description": "be relaxed and informal",
+      "examples": [
+        "using everyday language",
+        "being laid-back and friendly",
+        "not overly formal"
+      ]
+    },
+    "abrupt": {
+      "description": "be direct and possibly rude",
+      "examples": [
+        "being short and to the point",
+        "possibly being impolite"
+      ]
+    },
+    "neutral": {
+      "description": "be neutral",
+      "examples": [
+        "using a standard conversational tone",
+        "being neither overly polite nor casual"
+      ]
+    },
+    "helpful": {
+      "description": "be helpful",
+      "examples": [
+        "offering assistance willingly",
+        "being supportive and cooperative",
+        "showing enthusiasm to help"
+      ]
+    },
+    "disappointed": {
+      "description": "express sadness or dissatisfaction",
+      "examples": [
+        "showing unhappiness with a situation",
+        "expressing let-down feelings",
+        "a voice or words showing sadness"
+      ]
+    },
+    "patient": {
+      "description": "be calm and understanding",
+      "examples": [
+        "being willing to wait or explain",
+        "not rushing or getting frustrated",
+        "showing tolerance and understanding"
+      ]
+    },
+    "playful": {
+      "description": "be light-hearted and fun",
+      "examples": [
+        "using humor or jokes",
+        "being cheerful and entertaining",
+        "not taking things too seriously"
+      ]
+    },
+    "encouraging": {
+      "description": "be supportive and motivating",
+      "examples": [
+        "giving positive reinforcement",
+        "building confidence in others",
+        "being supportive and uplifting"
+      ]
+    },
+    "friendly": {
+      "description": "be warm and approachable",
+      "examples": [
+        "being welcoming and kind",
+        "creating a comfortable atmosphere",
+        "showing genuine interest in others"
+      ]
+    },
+    "direct": {
+      "description": "be straightforward and clear",
+      "examples": [
+        "being clear and to the point",
+        "speaking without unnecessary details",
+        "being straightforward in communication"
+      ]
+    },
+    "dismissive": {
+      "description": "show lack of interest or importance",
+      "examples": [
+        "showing disinterest or disregard",
+        "treating something as unimportant",
+        "being uninterested or unimpressed"
+      ]
+    },
+    "lively": {
+      "description": "be energetic and enthusiastic",
+      "examples": [
+        "being full of energy and excitement",
+        "showing enthusiasm and animation",
+        "being spirited and animated"
+      ]
+    },
+    "impatient": {
+      "description": "show frustration with waiting or delays",
+      "examples": [
+        "showing irritation with slowness",
+        "being frustrated by delays",
+        "wanting things to happen quickly"
+      ]
+    },
+    "worried": {
+      "description": "show concern or anxiety",
+      "examples": [
+        "expressing concern or anxiety",
+        "showing unease about something",
+        "being troubled or concerned"
+      ]
+    },
+    "pensive": {
+      "description": "be thoughtful and reflective",
+      "examples": [
+        "being deep in thought",
+        "showing contemplation or reflection",
+        "being thoughtful and considering"
+      ]
+    },
+    "incredulous": {
+      "description": "show disbelief or surprise",
+      "examples": [
+        "expressing disbelief or amazement",
+        "showing surprise or shock",
+        "being unable to believe something"
+      ]
+    },
+    "tired": {
+      "description": "show exhaustion or weariness",
+      "examples": [
+        "expressing fatigue or exhaustion",
+        "showing weariness or lack of energy",
+        "being physically or mentally tired"
+      ]
+    },
+    "disgusted": {
+      "description": "show strong dislike or revulsion",
+      "examples": [
+        "expressing strong dislike or revulsion",
+        "showing repulsion or aversion",
+        "being repelled or offended"
+      ]
+    },
+    "exasperated": {
+      "description": "show frustration and irritation",
+      "examples": [
+        "expressing frustration and irritation",
+        "showing annoyance and impatience",
+        "being fed up or irritated"
+      ]
+    },
+    "happy": {
+      "description": "show joy and contentment",
+      "examples": [
+        "expressing joy and happiness",
+        "showing contentment and satisfaction",
+        "being pleased and cheerful"
+      ]
+    },
+    "confused": {
+      "description": "show confusion or uncertainty",
+      "examples": [
+        "expressing confusion or uncertainty",
+        "showing doubt or confusion",
+        "being unsure or puzzled"
+      ]
+    },
+    "inquisitive": {
+      "description": "show interest or curiosity",
+      "examples": [
+        "expressing interest or curiosity",
+        "showing eagerness to learn",
+        "being curious or inquiring"
+      ]
+    },
+    "doubtful": {
+      "description": "show doubt or skepticism",
+      "examples": [
+        "expressing doubt or skepticism",
+        "showing uncertainty or hesitation",
+        "being unsure or doubtful"
+      ]
+    },
+    "like_a_phone_ringing": {
+      "description": "simulate a phone ringing",
+      "examples": [
+        "ringing",
+        "phone is ringing",
+        "phone is ringing"
+      ]
+    }
+  },
+  "formality": {
+    "formal": {
+      "description": "use formal language"
+    },
+    "informal": {
+      "description": "use informal language"
+    }
+  },
+  "topics": {
+    "coffee": {
+      "expectation_description": "to talk about coffee",
+      "past_tense_description": "talked about coffee"
+    },
+    "tea": {
+      "expectation_description": "to talk about tea",
+      "past_tense_description": "talked about tea"
+    },
+    "gift": {
+      "expectation_description": "to talk about the gift to bring to the party",
+      "past_tense_description": "talked about the gift to bring to the party"
+    },
+    "fruit": {
+      "expectation_description": "to talk about fruit",
+      "past_tense_description": "talked about fruit"
+    },
+    "sport": {
+      "expectation_description": "to talk about sport",
+      "past_tense_description": "talked about sport"
+    },
+    "traits": {
+      "expectation_description": "to talk about personality traits and how people look",
+      "past_tense_description": "talked about personality traits and how people look"
+    },
+    "meat": {
+      "expectation_description": "to talk about meat",
+      "past_tense_description": "talked about meat"
+    },
+    "pineapple": {
+      "expectation_description": "to talk about pineapple",
+      "past_tense_description": "talked about pineapple"
+    },
+    "nuts": {
+      "expectation_description": "to talk about nuts",
+      "past_tense_description": "talked about nuts"
+    },
+    "right_answer_to_female": {
+      "expectation_description": "to tell her the right answer",
+      "past_tense_description": "gave her the right answer"
+    },
+    "right_answer_to_male": {
+      "expectation_description": "to tell him the right answer",
+      "past_tense_description": "gave him the right answer"
+    },
+    "wrong_answer_to_female": {
+      "expectation_description": "to tell her the wrong answer",
+      "past_tense_description": "gave her the wrong answer"
+    },
+    "wrong_answer_to_male": {
+      "expectation_description": "to tell him the wrong answer",
+      "past_tense_description": "gave him the wrong answer"
+    },
+    "party": {
+      "expectation_description": "to talk about the party",
+      "past_tense_description": "talked about the party"
+    },
+    "shopping": {
+      "expectation_description": "to talk about shopping",
+      "past_tense_description": "talked about shopping"
+    },
+    "personality and physical appearance": {
+      "expectation_description": "to talk about personality traits and physical appearance",
+      "past_tense_description": "talked about personality traits and physical appearance"
+    },
+    "recipe": {
+      "expectation_description": "to talk about recipes and cooking",
+      "past_tense_description": "talked about recipes and cooking"
+    }
+  }
+}
